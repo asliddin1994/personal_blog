@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% csrf_token %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Add a New Post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.title.label_tag }}  <!-- Sarlavhani chiroyli qilib ko'rsatamiz -->
+            {{ form.title|add_class:"form-control"  }}
+            {% if form.title.errors %}
+                <div class="text-danger">{{ form.title.errors }}</div>
+            {% endif %}<!-- Title formasi -->
+        </div>
+        <div class="mb-3">
+            {{ form.body.label_tag }}  <!-- Mazmunni chiroyli qilib ko'rsatamiz -->
+            {{ form.body|add_class:"form-control" }}
+            {% if form.body.errors %}
+                <div class="text-danger">{{ form.body.errors }}</div>
+            {% endif %}<!-- Content formasi -->
+        </div>
+        <div class="mb-3">
+            {{ form.image.label_tag }}
+            {{ form.image|add_class:"form-control" }}
+            {% if form.image.errors %}
+                <div class="text-danger">{{ form.image.errors }}</div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.tags.label_tag }}
+            {{ form.tags|add_class:"form-control" }}
+            {% if form.tags.errors %}
+                <div class="text-danger">{{ form.tags.errors }}</div>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-success">Submit Post</button>
+    </form>
+    <div class="navbar-nav ml-auto">
+        <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
+        <a href="{% url 'signup' %}" class="nav-item nav-link">Register</a>
+    </div>
+</div>
+{% endblock %}
