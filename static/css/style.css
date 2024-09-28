@@ -62,7 +62,7 @@ body {
   line-height: 1.5;
   color: #666666;
   text-align: left;
-  background-color: #f1f3ff;
+  background-color: #f0f8ff;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -83,6 +83,48 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+.carousel-item img {
+    height: 400px; /* Balandlikni belgilash */
+    width: 100%; /* Kenglikni 100% qilib belgilash */
+    object-fit: cover; /* Tasvirni qamrab olish */
+}
+
+.card-img, .card-img-top, .card-img-bottom {
+    flex-shrink: 0;
+    width: 100%;
+    height: 200px;
+}
+.card {
+    height: 400px; /* Barcha cardlar uchun bir xil balandlik */
+}
+.card-title {
+    font-size: 1.25rem; /* Bir xil matn o'lchami */
+}
+
+.card-text {
+    font-size: 1rem; /* Bir xil matn o'lchami */
+}
+
+.card-body {
+    padding: 1.5rem; /* Barchasi uchun bir xil joylashuv */
+    text-align: center; /* Matn markazda joylashadi */
+    background-color: #f8f9fa; /* Yengil fon rangi */
+    border: 1px solid #dee2e6; /* Chegarani qo'shish */
+    border-radius: 0.5rem; /* Burchaklarni yumshatish */
+    height: 150px; /* Har bir card-body uchun bir xil balandlik */
+    display: flex; /* Flex konteyner sifatida */
+    flex-direction: column; /* Ustunlik bilan joylashtirish */
+    justify-content: center; /* Vertikal markazlash */
+}
+
+.sidebar {
+    transition: transform 0.3s ease; /* Animatsiya */
+    transform: translateX(-100%); /* Yashirin sidebar */
+}
+
+.sidebar.open {
+    transform: translateX(0); /* Sidebar ni ochish */
 }
 
 abbr[title],

@@ -3,29 +3,17 @@
 {% block content %}
 
             <!-- Page Header Start -->
-            <div class="container py-5 px-2 bg-primary">
-                <div class="row py-5 px-4">
+            <div class="container py-5 px-2 bg-secondary">
+                <div class="row py-5 px-2">
                     <div class="col-sm-6 text-center text-md-left">
-                        <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">About Me</h1>
-                    </div>
-                    <div class="col-sm-6 text-center text-md-right">
-                        <div class="d-inline-flex pt-2">
-                            <h4 class="m-0 text-white"><a class="text-white" href="{% url 'post_all' %}">Home</a></h4>
-                            <h4 class="m-0 text-white px-2">/</h4>
-                            <h4 class="m-0 text-white">About Me</h4>
-                        </div>
+                        <h1 class="text-white text-center text-uppercase font-weight-bold">About Me</h1>
                     </div>
                 </div>
-            </div>
-            <!-- Page Header End -->
-
-
-            <!-- About Start -->
-            <div class="container bg-white pt-5">
+                <div class="container bg-white pt-5">
                 <div class="row px-3 pb-5">
                     <div class="col-md-12">
                         <h2 class="mb-4 font-weight-bold">python developer with 1 years of experience</h2>
-                        <img class="img-fluid float-left w-50 mr-4 mb-3" src="{% static 'images/user.jpg' %}" alt="Image">
+                        <img class="img-fluid float-left w-50 mr-4 mb-3 rounded" src="{% static 'images/alexander.jpg' %}" alt="Image">
                         <p class="m-0">
                             I am a professional writer with 1 years of experience. I have written for various magazines and newspapers.
                         </p>
@@ -37,12 +25,11 @@
                                 <div class="progress-bar bg-info" role="progressbar" aria-valuenow="{{ skill.degree }}" aria-valuemin="0" aria-valuemax="90">{{ skill.name }}</div>
                             </div>
                             {% endfor %}
-
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- About End -->
-
+            </div>
+            <!-- Page Header End -->
 {% endblock content %}
 

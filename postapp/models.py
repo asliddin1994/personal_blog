@@ -5,17 +5,18 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
     image = models.FileField(upload_to='post-images')
-    tags = models.ManyToManyField("Tag", related_name='tags', blank=True, null=True)
+    tags = models.ManyToManyField("Tag", related_name='tags', blank=True)
     is_approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    views = models.IntegerField(default=0)  # Ko'rishlar soni
+    recommended = models.BooleanField(default=False)  # Tavsiya qilingan
 
     class Meta:
         app_label = 'postapp'
-        ordering = ['-created_on']  # bu yangi qushilgan postni birinchi chiqaradi
+        ordering = ['-created_on']
 
-
-    def __str__(self):  # bu metod tepadagi malumotlarni admin panelda string kurinishida chiqaradi
+    def __str__(self):
         return str(self.title)
 
 
@@ -32,8 +33,8 @@ class Comment(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
     website = models.CharField(max_length=100, blank=True, null=True)
-    parent = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='replies', blank=True, null=True)
-    image = models.FileField(upload_to='comment-image', default='comment-image/user2.png')
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name='replies', blank=True, null=True)
+    image = models.FileField(upload_to='comment-image', default='comment-image/jack.jpg')
     msg = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -41,11 +42,9 @@ class Comment(models.Model):
         return self.name
 
     @property
-    def getReplies(self):
-        return Comment.objects.filter(parent=self).reverse()
+    def get_replies(self):
+        return Comment.objects.filter(parent=self).order_by('-created_on')
 
     @property
-    def isParent(self):
-        if self.parent is None:
-            return True
-        return False
+    def is_parent(self):
+        return self.parent is None

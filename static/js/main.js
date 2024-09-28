@@ -40,4 +40,9 @@
         return false;
     });
 })(jQuery);
+// Sidebar ni ochish/yopish funksiyasi
+document.getElementById("toggleSidebar").onclick = function () {
+    var sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("open"); // "open" klassini qo'shish yoki o'chirish
+};
 

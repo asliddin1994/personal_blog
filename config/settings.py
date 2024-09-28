@@ -49,6 +49,8 @@ INSTALLED_APPS = [
 
 LOGIN_REDIRECT_URL = 'post_all'
 
+LOGOUT_REDIRECT_URL = 'post_all'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
